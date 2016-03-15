@@ -1,0 +1,52 @@
+<div class='container'>
+    <p>Am I here</p>
+    <p>Threads</p>
+
+    <form name="newThreadForm">
+        <input type="text" ng-model="newThreadTitle" placeholder="New thread title..." required/>
+        <button ng-disabled="newThreadForm.$invalid" ng-click="createThread(username, newThreadTitle)">Add Thread</button>
+    </form>
+
+    <br>
+
+    <div ng-repeat="thread in threads" class='list-group'>
+ 
+        <div class='alert alert-success'>     
+        <a ng-href="#/threads/{{thread.$id}}"  >                
+        <span>{{ thread.title }}</span>
+        <span>(by {{ thread.username }})</span></a>
+        <div class="pull-right" ng-click='delete(thread)'>[Delete]</div>                   
+        </div>
+
+    </div>
+</div>
+
+<!-- 
+
+<div class='container'>
+    <p>Am I here</p>
+    <p>Threads</p>
+
+    <form name="newThreadForm">
+        <input type="text" ng-model="newThreadTitle" placeholder="New thread title..." required/>
+        <button ng-disabled="newThreadForm.$invalid" ng-click="createThread(username, newThreadTitle)">Add Thread</button>
+    </form>
+
+    <br>
+
+    <div ng-repeat="thread in threads" class='list-group'>
+ 
+        <div class='alert alert-success'>     
+        <a ng-href="#/threads/{{thread.$id}}"  >                
+        <span>{{ thread.title }}</span>
+        <span>(by {{ thread.username }})</span> 
+        </a>           
+        </div>
+
+    </div>
+</div>
+
+
+
+
+ -->
