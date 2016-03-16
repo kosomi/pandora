@@ -7,9 +7,13 @@
   </form>
 
   <br>
-
+{{EnvironmentService.isLoggedin()}}
   <div ng-repeat="comment in comments" class='alert alert-info'>
   	{{ comment.username }}: {{ comment.text }}
   	<div class='pull-right' ng-click="delete(comment)">[Delete]</div>
   </div>
  </div>
+ 
+
+ <div class="btn btn-info btn-block" onclick="window.location.href='/#/threads'">Main</div>
+ <div class="btn btn-success btn-block" onclick="window.location.href='/#/login'">Log in</div>

@@ -28,16 +28,18 @@ app.config(function($routeProvider){
 		}
 	})
 	.otherwise({
-		redirectTo: '/login'
+		redirectTo: '/threads'
 	});
 })
 
 app.run(function($rootScope, $location, EnvironmentService){
 	$rootScope.$on('$routeChangeStart', function(event, next, current){
-		if(!EnvironmentService.getUsername()) {
+		if(!EnvironmentService.isLoggedin()) {
 			$location.path('/login');
 		} else {
 			$rootScope.username = EnvironmentService.getUsername();
 		}
 	})
 })
+
+

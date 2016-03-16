@@ -1,26 +1,91 @@
 <div class='container'>
-    <p>Am I here</p>
-    <p>Threads</p>
+    <p>Your user name : {{todaydate}} </p>
+ 
 
-    <form name="newThreadForm">
-        <input type="text" ng-model="newThreadTitle" placeholder="New thread title..." required/>
-        <button ng-disabled="newThreadForm.$invalid" ng-click="createThread(username, newThreadTitle)">Add Thread</button>
+    <form name="cups" class="form-horizontal panel-body">
+
+        <div class="form-group">
+            <label class="col-md-2 control-label">Date</label>
+            <div class='col-md-2'>
+            <input type="date" id="exampleInput" name="input" ng-model="Date" required />
+            </div>    
+        </div>
+
+        <div class="form-group">
+        <label class="col-md-2 control-label">Morning</label>
+            <div class='col-md-1'>
+            <input type="number" min="0" max="12" placeholder=0 class="form-control" ng-model="morningHour"  > 
+            </div>
+            <div class='col-md-1'>
+            <input type="number" min="0" max="60" placeholder=0  class="form-control" ng-model="morningMin"  > 
+            </div>  
+        </div>
+
+        <div class="form-group">
+        <label class="col-md-2 control-label">Morning</label>
+            <div class='col-md-1'>
+            <input type="number" min="0" max="12" placeholder=0  class="form-control" ng-model="noonHour"  > 
+            </div>
+            <div class='col-md-1'>
+            <input type="number" min="0" max="60" placeholder=0  class="form-control" ng-model="noonMin"  > 
+            </div>  
+        </div>
+
+        <div class="form-group">
+        <label class="col-md-2 control-label">Morning</label>
+            <div class='col-md-1'>
+            <input type="number" min="0" max="12" placeholder=0  class="form-control" ng-model="nightHour"  > 
+            </div>
+            <div class='col-md-1'>
+            <input type="number" min="0" max="60" placeholder=0  class="form-control" ng-model="nightMin"  > 
+            </div>  
+        </div>
+ 
+        <div class="form-group">
+        <label class="col-md-2 control-label">Comment</label>
+        <div class='col-md-2'>
+            <input type="text" class="form-control" ng-model="comment"  >   
+            </div> 
+        </div>
+
+        <div class="form-group">
+        <div class="col-md-offset-2 col-md-2">
+            <button   ng-click="recordCups(morningHour, noonHour, nightHour, morningMin, noonMin, nightMin, date, comment)" class='btn btn-warning btn-block'>Submit</button>
+            </div>
+        </div>
     </form>
+ 
 
     <br>
 
-    <div ng-repeat="thread in threads" class='list-group'>
- 
-        <div class='alert alert-success'>     
-        <a ng-href="#/threads/{{thread.$id}}"  >                
-        <span>{{ thread.title }}</span>
-        <span>(by {{ thread.username }})</span></a>
-        <div class="pull-right" ng-click='delete(thread)'>[Delete]</div>                   
-        </div>
-
+    <div style="background-color:white" >
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th><center>Date</th>
+                    <th><center>Morning</th>
+                    <th><center>Noon</th>
+                    <th><center>Night</th>
+                    <th><center>Total</th>
+                    <th><center>Comment</th>
+                </tr>
+            </thead>
+            <tbody align='center'>
+                <tr ng-repeat="thread in threads | orderBy:'date' " class='list-group'>
+                  <td><a ng-href="#/threads/{{thread.$id}}">{{thread.date | date:'fullDate'}}</a></td> 
+                  <td> {{ thread.morningHour  }}:{{ thread.morningMin  }} </td> 
+                  <td> {{ thread.noonHour }}:{{ thread.noonMin  }} </td> 
+                  <td> {{ thread.nightHour  }}:{{ thread.nightMin  }} </td> 
+                  <td><a ng-click="delete(thread)">{{thread.totalHour}}:{{ thread.totalMin  }}</a></td> 
+                  <td>{{thread.comment}}</a></td> 
+                </tr> 
+            </tbody>
+        </table> 
     </div>
-</div>
 
+ 
+</div>
+<br><br><br><br><br><br>
 <!-- 
 
 <div class='container'>

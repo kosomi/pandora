@@ -8,10 +8,18 @@ app.service('EnvironmentService', function($window) {
 
 	this.saveUsername = function(username){
 		$window.localStorage.setItem('username', username);
-	}
+	};
 
 	this.getUsername = function(){
 		return $window.localStorage.getItem('username');
-	}
+	};
+
+	this.isLoggedin = function(){
+		if($window.localStorage.getItem('username') !== undefined){
+			return true;
+		} else {
+			return false;
+		}
+	};
 
 });
